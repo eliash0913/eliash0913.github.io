@@ -1,1 +1,254 @@
-"Hello World"
+<!DOCTYPE html>
+<html>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script> 
+  <script src="index.js" charset="utf-8"></script>
+<head>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin-top:50px; background-color:white;}
+.mySlides {display: none}
+
+.slideshow-container {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.Title {
+  text-align: center;
+  margin: 5px;
+}
+
+.contents {
+  text-align: center;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  padding-left: 100px;
+}
+
+.next {
+  padding-right: 100px;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(148, 138, 138, 0.8);
+}
+
+.text {
+  color: #000000;
+  font-size: 20px;
+  padding: 20px 12px;
+  position: relative;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn {
+  height: 50px;
+  font-size: 20px;
+  text-align-last: center;
+}
+
+.slideText {
+  color: #000000;
+  font-size: 20px;
+  padding: 20px 30px;
+  position: absolute;
+  top: 0;
+}
+
+.aboutData {
+  margin-left: 300px;
+}
+
+.naviDot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px 30px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .naviDot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+</style>
+</head>
+<body>
+
+<div class="slideshow-container" width="80%" height="80%">
+
+<div class="mySlides fade">
+    <div class="slideText">1 / 5</div>
+  <h1 class="Title">U.S. Average Price of Property over time</h1>
+  <div id='US' class="contents">
+    <script>chart('US');</script>
+  </div>
+  <div class="text">
+    <div>Most people are interested in buying a house, and some people have concerns about house value changes. </div>
+    <div>For example, you bought a house, and you had to sell the house because your company wants to be relocated.</div>
+    <div>In this case, you might have concerns if the house price drops than that you paid?</div>
+    <div>This scene shows the trend of average price of properties in the United States from 1961 to 2021.</div>
+    <div>Since 1963, Property price has been increased as real estate market has been growing up.</div>
+    <div>except some special cases like Subprime Mortgage Crisis in 2007-2008 when dropped property prices</div>
+    <div>Overall, the average price of price went up by 2200 percent over 58 years</div>
+  </div>
+</div>
+
+<div class="mySlides fade">
+  <div class="slideText">2 / 5</div>
+  <h1 class="Title">CA State Average Price of Property over time</h1>
+  <div id='CA' class="contents">
+    <script>chart('CA');</script>
+  </div>
+  <div class="text">
+    <div>This scene shows the trend of the average price of properties in California State from 1996 to 2021</div>
+    <div>In California state, the average price of properties increased by 418 percent.</div>
+    <div>California state has the highest percentage in the United States.</div>
+    <div>It is more than two time of the average in Maine state.</div>
+  </div>
+</div>
+
+<div class="mySlides fade">
+  <div class="slideText">3 / 5</div>
+  <h1 class="Title">IL State Average Price of Property over time</h1>
+  <div id='IL' class="contents">
+    <script>chart('IL');</script>
+  </div>  
+  <div class="text">
+    <div>This scene shows the trend of the average price of properties in Illinois State from 1996 to 2021</div>
+    <div>In Illinois state, the average price of properties increased by 300 percent.</div>
+  </div>
+</div>
+
+<div class="mySlides fade">
+  <div class="slideText">4 / 5</div>
+  <h1 class="Title">ME State Average Price of Property over time</h1>
+  <div id='ME' class="contents">
+    <script>chart('ME');</script>
+  </div>
+  <div class="text">
+    <div>This scene shows the trend of the average price of properties in Maine State from 1996 to 2021</div>
+    <div>In Maine state, the average price of properties increased by 157 percent.</div>
+    <div>Maine state has the lowest percentage in the United States.</div>
+  </div>
+</div>
+
+<div class="mySlides fade">
+  <div class="slideText">5 / 5</div>
+  <h1 id='CUSTOMTITLE' class="Title">CA State Average Price of Property over time</h1>
+  <div id='CUSTOM' class="contents">
+    <script>customChart('CA');</script>
+  </div>
+  <div class="text"><select class="btn" id="selectButton"> </select></div>
+  <div class="text">
+    <div>As you see those three states, the property prices in everywhere in the United States have been increasing.</div>
+    <div>If you want to know about other states. Choose the state.</div>
+  </div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)" id="getSlide()">&#10094;</a>
+<a class="next" onclick="plusSlides(1)" id="getSlide()">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="naviDot" onclick="currentSlide(1)"></span> 
+  <span class="naviDot" onclick="currentSlide(2)"></span> 
+  <span class="naviDot" onclick="currentSlide(3)"></span> 
+  <span class="naviDot" onclick="currentSlide(4)"></span> 
+  <span class="naviDot" onclick="currentSlide(5)"></span> 
+</div>
+
+<div class="aboutData"><h4>About Data:</h4></div>
+<div class="aboutData">Property sales dataset source: Zillow.</div>
+<div class="aboutData">To see the exact date(quarter) and value, place a mouse cursor on the dot where you are interested.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    if(slideIndex+n<=5 && slideIndex+n >= 1) {
+      showSlides(slideIndex += n);
+    } else {
+      showSlides(slideIndex);
+    }
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function getSlide() {
+    return slideIndex;
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var naviDots = document.getElementsByClassName("naviDot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < naviDots.length; i++) {
+        naviDots[i].className = naviDots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    naviDots[slideIndex-1].className += " active";
+  }
+  </script>
+  
+  </body>
+  </html> 

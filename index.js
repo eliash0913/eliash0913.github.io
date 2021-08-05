@@ -26,18 +26,34 @@ const formatTime = d3.timeFormat("%b %d, %Y");
         .style("opacity", 0)
     }
 
-const margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 800 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+const margin = {top: 20, right: 50, bottom: 30, left: 50},
+    width = 1000 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
     const svg = d3.select(`#${id}`)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${margin.left+20},${margin.top-10})`);
 
-    
+    svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left - 20)
+    .attr("x", 0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Price");
+
+    svg
+    .append("text")             
+    .attr("transform",
+        "translate(" + (width/2) + " ," + 
+                        (height + margin.top + 20) + ")")
+    .style("text-anchor", "middle")
+    .text("Date");
+
 d3.csv(id === 'US' ? "https://eliash0913.github.io/US_Sales.csv" : "https://eliash0913.github.io/State_Sales.csv",
   function(d){
     return { date : d3.timeParse("%Y-%m-%d")(d.DATE), value : id === 'US' ? d.PRICE : d[id] }
@@ -103,17 +119,16 @@ async function customChart(id) {
       .style("border-radius", "5px")
       .style("padding", "5px")
 
-    const margin = {top: 10, right: 30, bottom: 30, left: 60},
-      width = 800 - margin.left - margin.right,
-      height = 600 - margin.top - margin.bottom;
+      const margin = {top: 20, right: 50, bottom: 30, left: 50},
+      width = 1000 - margin.left - margin.right,
+      height = 700 - margin.top - margin.bottom;
       d3.select(`#CUSTOM`).selectAll('svg').remove();
       const svg = d3.select(`#CUSTOM`)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
-    
+    .append("g")
+      .attr("transform", `translate(${margin.left+20},${margin.top-10})`);
       d3.select("#selectButton")
       .selectAll('myOptions')
       .data(allGroup)
@@ -122,6 +137,23 @@ async function customChart(id) {
       .text(d => d) 
       .attr("value", d => d) 
 
+      svg
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left - 20)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Price");
+  
+      svg
+      .append("text")             
+      .attr("transform",
+          "translate(" + (width/2) + " ," + 
+                          (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+      .text("Date");
+      
     const formatTime = d3.timeFormat("%b %d, %Y");
       const mouseover = function(event,d) {
         Tooltip
@@ -179,7 +211,7 @@ async function customChart(id) {
 
             d3.select("#selectButton").on("change", function(event, d) {
               let selectedOption = d3.select(this).property("value")
-              d3.select("#CUSTOMTITLE").html(selectedOption + " State Average Property Price over time");
+              d3.select("#CUSTOMTITLE").html(selectedOption + " State Average Price of Property over time");
               customChart(selectedOption)
           })
   })
