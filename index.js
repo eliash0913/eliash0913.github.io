@@ -54,7 +54,7 @@ const margin = {top: 20, right: 50, bottom: 30, left: 50},
     .style("text-anchor", "middle")
     .text("Date");
 
-d3.csv(id === 'US' ? "https://eliash0913.github.io/datasets/US_Sales.csv" : "https://eliash0913.github.io/datasets/UState_Sales.csv",
+d3.csv(id === 'US' ? "https://eliash0913.github.io/datasets/US_Sales.csv" : "https://eliash0913.github.io/datasets/State_Sales.csv",
   function(d){
     return { date : d3.timeParse("%Y-%m-%d")(d.DATE), value : id === 'US' ? d.PRICE : d[id] }
   }).then(
@@ -103,7 +103,7 @@ d3.csv(id === 'US' ? "https://eliash0913.github.io/datasets/US_Sales.csv" : "htt
 async function customChart(id) {
   const allGroup = ["CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK","ND","VT","DC","WY","STATECODE","CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK","ND","VT","DC","WY","STATECODE","CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK","ND","VT","DC","WY","STATECODE","CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK","ND","VT","DC","WY","STATECODE","CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK","ND","VT","DC","WY","STATECODE","CA","TX","NY","FL","IL","PA","OH","MI","GA","NC","NJ","VA","WA","MA","IN","AZ","TN","MO","MD","WI","MN","CO","AL","SC","LA","KY","OR","OK","CT","IA","MS","AR","KS","UT","NV","NM","WV","NE","ID","HI","ME","NH","RI","MT","DE","SD","AK"]
 
-  d3.csv("https://eliash0913.github.io/datasets/UState_Sales.csv",
+  d3.csv("https://eliash0913.github.io/datasets/State_Sales.csv",
     function(d){
       return { date : d3.timeParse("%Y-%m-%d")(d.DATE), value : d[id]}
     }).then(
